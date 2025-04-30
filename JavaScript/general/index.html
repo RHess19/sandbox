@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Practice</title>
 </head>
+
 <body>
 
     <button>Press Me!</button>
     <div id="greeting"></div>
+
+    <label for="weather">Select the weather type today:</label>
+    <select id="weather">
+        <option value="">--Make a choice--</option>
+        <option value="sunny">Sunny</option>
+        <option value="rainy">Rainy</option>
+        <option value="snowing">Snowing</option>
+        <option value="overcast">Overcast</option>
+    </select>
+
+    <p id="weatherParagraph"></p>
+
+
+    <label for="theme">Select theme: </label>
+    <select id="theme">
+        <option value="white">White</option>
+        <option value="black">Black</option>
+    </select>
 
     <script>
         /* NUMERICAL OPERATIONS */
@@ -46,7 +66,7 @@
 
         let score = 9;
         let highestScore = 10;
-        let output = `score/highestScore = ${score/highestScore}`;
+        let output = `score/highestScore = ${score / highestScore}`;
         console.log(output);
 
         let myString = "123";
@@ -64,8 +84,7 @@
 
         const button = document.querySelector("button");
 
-        function greet()
-        {
+        function greet() {
             const name = prompt("What is your name?");
             const greeting = document.querySelector("#greeting");
             greeting.textContent = "Hello " + name + ", nice to see you!";
@@ -151,7 +170,138 @@
         let text19 = text18.split(" ");
         console.log(text19);
 
+
+
+        // Conditionals
+
+        // String comparisons - similar to dictionary comparisons, but case matters - lowercase is "greater" than uppercase because lowercase has larger indexes in unicode
+        let test1 = 'Z' > 'A'; // true
+        let test2 = 'Glow' > 'Glee'; // true
+        let test3 = 'Bee' > 'Be'; // true
+
+        // JS converts values of different types to numbers when comparing
+        let test4 = '2' > 1; //true
+        let test5 = '01' == 1; // true
+
+        // Strict equality
+        let test6 = 0 == false; // true
+        let test7 = '' == false; // true
+        let test8 = 0 === false; // false - types are different
+        let test9 = 0 !== false; // true - types are different. !== is the equivalent strict version of !=
+
+        // Null and Undefined
+        let test10 = null === undefined; // false - different types
+        let test11 = null == undefined; // true
+        // for comparisons (> < >= <=), null and undefined become 0 and NaN, respectively
+
+        let test12 = null > 0; // false
+        let test13 = null == 0; // false - for equality checks, null and undefined equal each other and nothing else
+        let test14 = null >= 0; // true
+
+
+
+        // Logical operators
+        // OR - ||
+        let result2 = 1 || 2 || 3; // Evaluates left to right. On first true result, returns the value of the true operand. If all operands get evaluated, returns the last operand
+        let result3 = null || 1; // 1 (1 is the first truthy value)
+        let result4 = null || 0 || 1; // 1 (the first truthy value)
+        let result5 = undefined || null || 0; // 0 (all falsy, returns the last value)
+
+        // AND - && - evaluates left to right. Returns the first false value or the last value if none were found
+
+        let age = 14;
+        if (14 <= age <= 90) {
+            console.log("1");
+        }
+
+        if (!(14 <= age <= 90)) {
+            console.log("2");
+        }
+
+
+        const select = document.querySelector("select");
+        const para = document.querySelector("#weatherParagraph");
+
+        select.addEventListener("change", setWeather);
+
+        /*function setWeather() {
+            const choice = select.value;
+
+            if (choice === "sunny") {
+                para.textContent = "Sunny!";
+            }
+
+            else if (choice === "rainy") {
+                para.textContent = "Rainy!";
+            }
+
+            else if (choice === "snowing") {
+                para.textContent = "Snowy!";
+            }
+
+            else if (choice === "overcast") {
+                para.textContent = "Overcast!";
+            }
+
+            else {
+                para.textContent = "";
+            }
+        }*/
+
+
+
+        // Switch statements - rewrite above function with switch
+
+        function setWeather() {
+            const choice = select.value;
+
+            switch (choice)
+            {
+                case "sunny":
+                    para.textContent = "Sunny!";
+                    break;
+                
+                case "rainy":
+                    para.textContent = "Rainy!";
+                    break;
+                
+                case "snowing":
+                    para.textContent = "Snowy!";
+                    break;
+                
+                case "overcast":
+                    para.textContent = "Overcast!";
+                    break;
+
+                default:
+                    para.textContent = "";
+            }
+        }
+
+
+
+        // Ternary operator
+
+        // condition ? run if true : run if false
+
+        const themeSelect = document.querySelector("#theme");
+        const html = document.querySelector("html");
+
+        function update(bgColor, textColor)
+        {
+            html.style.backgroundColor = bgColor;
+            html.style.color = textColor;
+        }
+
+        selectTheme = document.getElementById('theme');
+
+        selectTheme.addEventListener("change", () =>
+            selectTheme.value === "black" ? update("black", "white") : update("white", "black"),
+    );
+
+
     </script>
-    
+
 </body>
+
 </html>
