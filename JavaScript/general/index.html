@@ -7,7 +7,12 @@
 </head>
 <body>
 
+    <button>Press Me!</button>
+    <div id="greeting"></div>
+
     <script>
+        /* NUMERICAL OPERATIONS */
+
         /*console.log(23+97);
         console.log(3+6+3+2+1);
         console.log((4+6+9)/77);
@@ -27,6 +32,8 @@
 
         console.log(percentage);*/
 
+
+        /* STRINGS */
         let name = "Chris";
         let greeting = `Hello, ${name}`;
         console.log(greeting);
@@ -49,6 +56,101 @@
         let myNum2 = 123;
         let myString2 = String(myNum2);
         console.log(typeof myString2);
+
+        // Multiline string
+        const newline = `testing a multiline
+        string`;
+        console.log(newline);
+
+        const button = document.querySelector("button");
+
+        function greet()
+        {
+            const name = prompt("What is your name?");
+            const greeting = document.querySelector("#greeting");
+            greeting.textContent = "Hello " + name + ", nice to see you!";
+        }
+
+        button.addEventListener("click", greet);
+
+        // LENGTH
+        let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let length = text.length;
+        console.log(length);
+
+        // Extracting string characters
+        // charAt
+        let text2 = "HELLO WORLD";
+        let char = text.charAt(0); // If no character found, returns empty string
+        console.log(char);
+
+        //charCodeAt
+        let text3 = "HELLO WORLD";
+        let char2 = text.charCodeAt(0); // Return UTF-16 code at index
+        console.log(char2);
+
+        // at
+        const name2 = "testing";
+        let letter = name2.at(2); // at() allows negative indexes - charAt() does not
+        console.log(letter);
+
+        // property access
+        let text4 = "HELLO WORLD";
+        let char3 = text[0]; // If no character found, returns undefined. Read only
+        console.log(char3);
+
+        // Extract string parts
+        // Slice
+        let text5 = "Apple, Banana, Kiwi";
+        let part = text5.slice(7, 13); // End index not included
+        console.log(part);
+
+        // substring
+        let str = "Apple, Banana, Kiwi";
+        let part2 = str.substring(7, 13); // Start and end values less than 0 are treated as 0, compared to slice
+        console.log(part2);
+
+        // toUpperCase()
+        let text6 = "Hello World!";
+        let text7 = text6.toUpperCase(); // Counterpart, toLowerCase()
+        console.log(text7);
+
+        // concat()
+        let text8 = "Hello";
+        let text9 = "World!";
+        let text10 = text8.concat(" ", text9);
+        console.log(text10);
+
+        // trim() - trimStart() & trimEnd() also exist
+        let text11 = "      TEST        ";
+        let text12 = text11.trim();
+        console.log(text12);
+
+        // padStart() & padEnd() ***To pad a number, conver to a string first
+        let text13 = "5";
+        let padded = text13.padStart(4, "0"); // Pad with 0s until length of text13 is 4
+        console.log(padded);
+
+        // repeat() - returns a string with a number of copies of a string. Returns a new string and does not change the original string
+        let text14 = "copy test";
+        let result = text14.repeat(2);
+        console.log(result);
+
+        // replace() - does not chagne the original string. Returns a new string. Replaces only the first match (can use regex as first argument to change this behavior)
+        let text15 = "Please visit Microsoft!";
+        let newText = text15.replace("Microsoft", "W3Schools");
+        console.log(newText);
+
+        // replaceAll()
+        let text16 = "cats cats";
+        let text17 = text16.replaceAll("cats", "dogs");
+        console.log(text17);
+
+        // split() - conver to array on a delimeter
+        let text18 = "test test test";
+        let text19 = text18.split(" ");
+        console.log(text19);
+
     </script>
     
 </body>
