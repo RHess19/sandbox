@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Custom Events</title>
+</head>
+
+<body>
+    <div class="note">Custom Event Demo</div>
+
+
+
+    <script>
+
+        // Highlight elem and trigger the highlight event
+        function highlight(elem) {
+            const bgColor = 'yellow';
+            elem.style.backgroundColor = bgColor;
+
+            let event = new CustomEvent('highlight', {
+                detail: { backgroundColor: 'yellow' }
+            });
+
+            elem.dispatchEvent(event);
+        }
+
+        let div = document.querySelector('.note');
+        function addBorder(elem) {
+            elem.style.border = "solid 1px red";
+        }
+
+        // When something is highlighted, add a border to it
+        div.addEventListener('highlight', () => {
+            addBorder(this);
+        });
+
+        highlight(div);
+
+
+    </script>
+</body>
+
+</html>
