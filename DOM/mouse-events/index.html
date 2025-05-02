@@ -43,9 +43,8 @@
         });
 
         // alternate method
-        let btn1 = document.querySelector("#btn1");
 
-        btn2.onClick = () => {
+        btn2.onclick = () => {
             console.log("button 2 clicked");
         }
 
@@ -104,7 +103,7 @@
         let track = document.querySelector(".track");
         track.addEventListener('mousemove', (e) => {
             let log = document.querySelector("#log");
-            log.innerText = `Screen X/Y: (${e.screenX}, ${screenY})\nClient X/Y: (${e.clientX}, ${e.clientY})`;
+            log.innerText = `Screen X/Y: (${e.screenX}, ${e.screenY})\nClient X/Y: (${e.clientX}, ${e.clientY})`;
         });
 
     </script>
