@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Mouse Events</title>
+
+    <style>
+        .track {
+            background-color: goldenrod;
+            height: 200px;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">Button 1</button>
+    <button id="btn2">Button 2 (button 1 alternate method)</button>
+
+    <button id="btn3">Click to detect which mouse button was clicked</button>
+    <p id="message"></p>
+
+    <button id="btnKeys">Click with alt, shift, or ctrl pressed</button>
+    <p id="messageKeys"></p>
+
+    <p>Move your mouse to see its location</p>
+    <div class="track"></div>
+    <p id="log"></p>
+
+
+
+
+
+    <script>
+
+        let btn1 = document.querySelector("#btn1");
+        let btn2 = document.querySelector("#btn2");
+
+        btn1.addEventListener("click", () => {
+            console.log("button 1 clicked");
+        });
+
+        // alternate method
+        let btn1 = document.querySelector("#btn1");
+
+        btn2.onClick = () => {
+            console.log("button 2 clicked");
+        }
+
+
+
+        // Detecting mouse buttons
+
+        let btn3 = document.querySelector("#btn3");
+
+        // Prevent right-click context menu
+        btn3.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        btn3.addEventListener('mouseup', (e) => {
+            let msg = document.querySelector('#message');
+
+            switch (e.button) {
+                case 0:
+                    msg.textContent = "Left mouse button";
+                    break;
+
+                case 1:
+                    msg.textContent = "Middle mouse button";
+                    break;
+
+                case 2:
+                    msg.textContent = "Right mouse button";
+                    break;
+
+                default:
+                    msg.textContent = `Unknown mouse button code: ${event.button}`;
+            }
+        });
+
+
+        // Detect keys w/ mouse presses
+
+        let btnKeys = document.querySelector("#btnKeys");
+
+        btnKeys.addEventListener("click", (e) => {
+            let keys = [];
+
+            if (e.shiftKey) keys.push('shift');
+            if (e.ctrlKey) keys.push('ctrl');
+            if (e.altKey) keys.push('alt');
+            if (e.metaKey) keys.push('meta (windows or command)');
+
+            let msg = document.querySelector("#messageKeys");
+            msg.textContent = `Keys: ${keys.join('+')}`;
+        });
+
+
+        // Screen coordinates
+
+        let track = document.querySelector(".track");
+        track.addEventListener('mousemove', (e) => {
+            let log = document.querySelector("#log");
+            log.innerText = `Screen X/Y: (${e.screenX}, ${screenY})\nClient X/Y: (${e.clientX}, ${e.clientY})`;
+        });
+
+    </script>
+</body>
+
+</html>
