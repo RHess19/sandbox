@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Event Delegation</title>
+</head>
+
+<body>
+    <ul id="menu">
+        <li><a id="home">Home</a></li>
+        <li><a id="dashboard">Dashboard</a></li>
+        <li><a id="report">Report</a></li>
+    </ul>
+
+    <p id="message"></p>
+
+
+    <script>
+        //let home = document.querySelector('#home');
+        //home.addEventListener('click', (event) => {
+        //    console.log('Home menu item was clicked');
+        //});
+//
+        //let dashboard = document.querySelector('#dashboard');
+        //dashboard.addEventListener('click', (event) => {
+        //    console.log('Dashboard menu item was clicked');
+        //});
+//
+        //let report = document.querySelector('#report');
+        //report.addEventListener('click', (event) => {
+        //    console.log('Report menu item was clicked');
+        //});
+
+
+        // INSTEAD
+
+        let menu = document.querySelector("#menu");
+        let msg = document.querySelector("#message");
+
+        menu.addEventListener("click", () => {
+            let target = event.target;
+
+            switch(target.id) {
+
+                case "home":
+                    msg.textContent = "Home clicked";
+                    break;
+
+                case "dashboard":
+                    msg.textContent = "Dashboard clicked";
+                    break;
+
+                case "report":
+                    msg.textContent = "Report clicked";
+                    break;
+            }
+        });
+
+    </script>
+</body>
+
+</html>
