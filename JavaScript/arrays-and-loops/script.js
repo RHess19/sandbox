@@ -152,6 +152,13 @@ const upperFruits = fruits.map(toUpper);
 // Filter() - Iterates through an array and applies the callback function, but only returns a value from the array IF the callback function returns true
 const filteredFruits = fruits.filter(lFruit);
 
+// Reduce() - Takes a callback function with two arguments - the 'accumulator': current value of the result at that point in the loop, and the 'current' value: the item currently being iterated on
+// Also takes an initialValue - can be optionally set to change the first element in the array to be operated on
+const arr = [1, 2, 3, 4, 5];
+const productOfAllNums = arr.reduce((total, currentItem) => {
+    return total * currentItem;
+}, 1); // Initialize total to 1 at the beginning
+
 i = 1;
 // do-while
 do {
