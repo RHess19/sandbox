@@ -149,7 +149,7 @@ for (const fruit of fruits)
 // Map() - Pass function, and map() calls the function once for each item in the array, and adds each return value from the function to a new array, then returns the new array
 const upperFruits = fruits.map(toUpper);
 
-// Filter() - Test each item in a collection and create a new collection containing matching items
+// Filter() - Iterates through an array and applies the callback function, but only returns a value from the array IF the callback function returns true
 const filteredFruits = fruits.filter(lFruit);
 
 i = 1;
