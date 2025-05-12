@@ -129,3 +129,27 @@ $global_variable = "global" # SHOULD NOT USE
 
 # Instance variables - accessible by the current instance of the parent class
 # @var = "instance"
+
+
+# In-place operations
+quiet = "hello there"
+loud = quiet.upcase
+
+puts loud # HELLO THERE
+puts quiet # hello there
+
+# In place operations modify the original object
+quiet2 = "hello there"
+loud2 = quiet2.upcase!
+
+puts loud2 # HELLO THERE
+puts quiet2 # HELLO THERE
+
+# string concatenation in-place
+tom = "kitty"
+jerry = tom
+
+tom << "kat"
+
+puts tom # kittykat
+puts jerry # kittykat
