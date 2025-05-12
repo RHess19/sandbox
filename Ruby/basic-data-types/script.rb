@@ -111,3 +111,21 @@ puts test_hash[:cat]
 # new hash syntax - only works when using symbols as keys
 test_hash2 = {dog: 'barks', cat: 'meows', pig: 'oinks'}
 puts test_hash2[:dog] # must still put a : before the key when accessing items
+
+
+# Get user input
+puts "Name: "
+name = gets.chomp # prompt user for input, then use .chomp to remove escape characters at the end (like the newline entered by hitting enter at the command line)
+puts name
+
+# Constants
+MY_CONSTANT = "constant" # all upppercase denotes a constant. Can be changed, but will throw a warning
+
+# Global variables
+$global_variable = "global" # SHOULD NOT USE
+
+# Class variables - accessible by instances of a class as well as the class itself
+# @@instances = 0
+
+# Instance variables - accessible by the current instance of the parent class
+# @var = "instance"
