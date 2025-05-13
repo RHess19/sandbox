@@ -103,13 +103,27 @@ response = age < 18 ? "You're young" : "You're old"
 
 ########## LOOPS #########
 
-# While loop
+# Default loop - goes forever unless you use break
+i = 0
+loop do
+  puts i
+  i += 1
+  break if i == 10
+end
+
+# While loop - unlike loop, is not a method. Therefore, the body is in the same scope as the code containing the loop
 i = 0
 sum = 0
 while i < 10 do
   i = i + 1
   sum = sum + i
 end
+
+# begin...end - not recommended to use
+begin
+  puts "Enter Y to continue the loop: "
+  answer = gets.chomp
+end while answer == 'Y'
 
 puts "The sum of 0..9 is #{sum}"
 
@@ -127,6 +141,11 @@ until hours_left == 0
 end
 
 # For loop
+
+# Ranges
+(1..5) # inclusive range - 1, 2, 3, 4, 5
+(1...5) # exclusive range - 1, 2, 3, 4
+
 for i in 0..9 do
   puts "#{i}"
 end
@@ -143,6 +162,10 @@ end
 planets.each do |planet|
   puts planet
 end
+
+# Each index
+test_array = [1, 2, 3, 4]
+test_array.each_index {|i| print "#{test_array[i]}"}
 
 # Break
 r = 0
@@ -164,6 +187,7 @@ while num < 100
   print "#{num} "
 end
 
+# Unless statement
 # single line example
 puts "You're old" unless age < 18
 
@@ -185,3 +209,18 @@ while true
         redo # Restarts a loop without evaluating the loop condition
     end
 end
+
+
+# #times loop
+5.times do
+  puts "Test"
+end
+
+5.times do |number|
+  puts number
+end
+
+
+# #upto and #downto
+5.upto(10) { |num| print "#{num} " }
+10.downto(5) { |num| print "#{num} "}
