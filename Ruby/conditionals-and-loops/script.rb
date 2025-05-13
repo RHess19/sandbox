@@ -167,6 +167,10 @@ end
 test_array = [1, 2, 3, 4]
 test_array.each_index {|i| print "#{test_array[i]}"}
 
+# each_with_index
+a = [1, 2, 3, 4, 5]
+a.each_with_index { |val, idx| puts "Index: #{idx+1}, Value: #{val}" }
+
 # Break
 r = 0
 while true
