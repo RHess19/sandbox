@@ -6,6 +6,12 @@
 # BANG
 # GROUP_BY
 
+# Predicate Methods
+# INCLUDE?
+# ANY?
+# ALL?
+# NONE?
+
 
 # Enumerables are methods that are built-in for both arrays and hashes
 
@@ -79,3 +85,38 @@ puts friends.group_by { |name| name.length } # returns {6 => ["SHARON"], 3 => ["
 # Best practice is to NOT use bang methods
 # 1. Store in a local variable
 # 2. Wrap the enumerable method in a method definition
+
+
+
+
+
+
+
+
+
+
+
+######### PREDICATE METHODS #########
+
+# include? - returns true if an element exists in an array. Else, false
+numbers.include?(3) # true
+numbers.include?(8) # false
+
+
+# any? - returns true if any elements in the array or hash match the block condition. Else, false
+numbers.any? { |number| number > 3 } # true
+numbers.any? { |number| number > 700 } # false
+
+
+# all? - returns true if all elements in the array or hash match the block condition. Else, false
+friends.all? { |friend| friend.length > 2 } # true
+friends.all? { |friend| friend.length > 6 } # false
+
+
+# none? - returns true if none of the elements in the array or hash return true. Else, false
+friends.none? { |friend| friend.length > 2 } # false
+friends.none? { |friend| friend.length > 6 } # true
+
+
+# one? - returns true if exactly one element in the array or hash returns true. Else, false
+friends.one? { |friend| friend == "Leo" } # true
