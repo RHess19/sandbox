@@ -4,7 +4,8 @@
 num_array = [1, 2, 3, 4, 5]
 
 # method 2
-# Array.new() has two optional arguments - initial size and default value
+# Array.new() has two optional arguments - initial size and default value  - should ONLY use the second argument with an immutable object like number, boolean, or symbol. Do NOT use string, array, hash, or other
+# mutable objects. See sandbox/Ruby/nested-collections/script.rb for explanation
 str_array = Array.new(3, 7) # [7, 7, 7]
 
 
