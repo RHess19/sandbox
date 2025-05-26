@@ -10,6 +10,10 @@
 # # Constants
 # to_s method
 # Inheritance
+# Inheritance vs. Modules
+# Namespacing
+# Module methods
+# Private, Protected, and Public
 
 
 # Creating a module - behaviors in modules can be included in classes
@@ -18,6 +22,9 @@ module Speak
         puts sound
     end
 end
+
+# NOTE
+# When including multiple modules in a class, the LAST defined module is the first module that Ruby searches for a method in.
 
 
 
@@ -162,3 +169,148 @@ puts "#{dog3}" # String interpolation also calls to_s
 
 
 # Inheritance
+
+class Animal
+    attr_accessor :name
+
+    def initialize(name)
+        @name = name
+    end
+
+    def speak
+        "Hello"
+    end
+end
+
+class Horse < Animal
+    def initialize(color)
+        super # Can also call super as super(). This calls with no arguments and is the preferred way to call superclass methods if they don't expect arguments
+        @color = color
+    end
+end
+
+class Fish < Animal
+    def initialize(name, color)
+        super(name) # Send arguments to the superclass method
+        @color = color
+    end
+    
+    # If a method identical to a superclass method is defined in a subclass, it overrides the superclass method UNLESS you invoke the "super" keyword, which calls the superclass method of the same name.
+    def speak
+        super + " from Fish class."
+    end
+end
+
+fido = Horse.new("Green")
+puts fido.speak
+p fido #<Horse:0x00007fc92bd23510 @name="Green", @color="Green"> - name is "green" because the parent's initialize method is called with the argument provided in the subclass - "Green"
+
+blub = Fish.new("blub", "Yellow")
+puts blub.speak
+
+
+
+
+# Inheritance vs. Modules
+# Modules are useful when a normal heirarchy does not exist, and individul subclasses need a behavior that their siblings don't
+
+# CONSIDERATIONS
+# You can only inherit from one class, but you can mix in any number of modules.
+# If B and A have an is-a relationship, inheritance may be best. If B and A have a has-a relationship, defining B as a module may be best.
+# You cannot create objects from modules.
+
+
+
+
+# Namespacing
+module Mammal
+    class Cow
+        def speak(sound)
+            p "#{sound}"
+        end
+    end
+
+    class Goat
+        def say_name(name)
+            p "#{name}"
+        end
+    end
+end
+
+
+betty = Mammal::Cow.new
+buddy = Mammal::Goat.new
+
+betty.speak("MOO")
+buddy.say_name("Chevy")
+
+
+
+# Module Methods - you can call methods in a module directly from the module without including the module in a class
+
+module Conversions
+    def self.farenheit_to_celcius(num)
+        (num-32) * 5 / 9
+    end
+end
+
+puts Conversions.farenheit_to_celcius(60) # Preferred method
+# OR
+puts Conversions::farenheit_to_celcius(60)
+
+
+
+# Private, Protected, and Public
+
+# Private - only available to methods in the class
+class GoodDog
+    DOG_YEARS = 7
+
+    attr_accessor :name, :age
+
+    def initialize(name, age)
+        self.name = name
+        self.age = age
+    end
+
+    def public_disclosure
+        "#{self.name} in human years is #{human_years}"
+    end
+
+
+    private
+
+    def human_years
+        age * DOG_YEARS
+    end
+end
+
+sparky = GoodDog.new("Sparky", 4)
+#sparky.human_years # does not work since human_years is private
+puts sparky.public_disclosure
+
+
+
+# Protected - cannot be invoked outside the class, but can be invoked between class instances
+class Person
+    def initialize(age)
+        @age = age
+    end
+
+    def older?(other_person)
+        age > other_person.age # calling #age on another instance of the same object works
+    end
+
+
+    protected
+
+    attr_reader :age
+end
+
+malory = Person.new(64)
+sterling = Person.new(42)
+
+malory.older?(sterling)
+sterling.older?(malory)
+
+#malory.age # does not work since we are invoking #age from outside the class.
