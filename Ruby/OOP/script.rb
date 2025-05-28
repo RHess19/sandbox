@@ -14,6 +14,7 @@
 # Namespacing
 # Module methods
 # Private, Protected, and Public
+# Operator overloading
 
 
 # Creating a module - behaviors in modules can be included in classes
@@ -314,3 +315,25 @@ malory.older?(sterling)
 sterling.older?(malory)
 
 #malory.age # does not work since we are invoking #age from outside the class.
+
+
+
+
+# Operator overloading
+class Circle
+
+    attr_accessor :radius
+
+    def initialize(r)
+        @radius = r
+    end
+
+    def +(other_circle)
+        @radius + other_circle.radius
+    end
+end
+
+c1 = Circle.new(5)
+c2 = Circle.new(6)
+c3 = c1 + c2
+puts c3
