@@ -133,6 +133,9 @@ BUNDLED WITH
     2.6.8
 ```
 
+When you distribute your code/project, add the following to your app:
+```require 'bundler/setup'```
+```require 'some-gem'``` like normal.
 
 
 ## .ruby-version
