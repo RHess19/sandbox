@@ -1,7 +1,7 @@
 # Contents
-Ruby conventions for multiple files
-``` require_relative ``` and ``` require ```
-Gems
+Ruby conventions for multiple files  
+``` require_relative ``` and ``` require ```  
+Gems  
 .ruby-version
 
 
