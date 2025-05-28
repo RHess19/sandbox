@@ -94,11 +94,12 @@ puts 'Green'.colorize(:green)
 ```
 
 
-If your project has many gems, you can ensure users of your project have all the required gems (and the right versions) with ``` Bundler ```.
+If your project has many gems, you can ensure users of your project have all the required gems (and the right versions, regardless of what other versions are installed on a system) with ``` Bundler ```.
 
 First, run ``` bundle init ``` to create a default Gemfile in the current directory
 Then, for this example, run ``` bundle add colorize ``` to add the colorize gem to the Gemfile
 This creates two files - ``` Gemfile ``` and ``` Gemfile.lock ```
+Using ```bundle exec ruby [filename]```, the program will be executed using the version of gems specified in ```Gemfile.lock```.
 
 #### Gemfile
 Contains information on where to get gems and what gems are required
