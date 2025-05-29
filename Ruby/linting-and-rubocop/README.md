@@ -162,6 +162,8 @@ Style/FrozenStringLiteralComment:
 
 To make projects use your preferred defaults if no .rubocop.yml file is specified in the project directory, put a .rubocop.yml file in your computer's root directory: ```~/```. Then, rubocop will use that file for any project that does not have any local .rubocop.yml file.
 
+Alternatievly, put .rubocop.yml in a .config folder in your project's root directory. RuboCop will also search there for configuration files.
+
 #### Preference inheritance
 
 Add ```inherit_from ~/.rubocop.yml``` (or whatever path to a .rubocop.yml file) to inherit all behaviors from that file. You are still free to override those behaviors in the local file if you wish.
