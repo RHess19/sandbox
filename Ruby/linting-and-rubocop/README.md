@@ -9,6 +9,8 @@
 - Disabling cops in your code
 - Enforcing personal style preferences
 - Preference inheritance
+- Explanation of some RuboCop metrics
+- RuboCop in VSCode
 
 
 ## RuboCop  
@@ -163,3 +165,38 @@ To make projects use your preferred defaults if no .rubocop.yml file is specifie
 #### Preference inheritance
 
 Add ```inherit_from ~/.rubocop.yml``` (or whatever path to a .rubocop.yml file) to inherit all behaviors from that file. You are still free to override those behaviors in the local file if you wish.
+
+
+
+#### Explanation of some RuboCop metrics
+
+##### ABC Metric
+
+*A*ssignment, *B*ranches, and *C*onditionals
+
+Assignment: Setting or mutating variables
+Branches: Method calls
+Conditionals: Conditionals and comparisons
+
+ABC will provide the total ABC score and its parts:
+```C: Metrics/AbcSize: Assignment Branch Condition size for testing is too high. \[\<1, 18, 0\> 18.03/17\]```
+
+1, 18, 0 refers to 1 assignment, 18 branches, and 0 conditionals.
+
+18.03/17 shows your score vs. the allowed score.
+
+
+##### Cyclomatic Complexity
+
+Measures how many possible paths the program can go through. Generally refers to control flow statements (if, while, loops, logical operators) and iterators (#each, #map, etc.).
+
+
+##### Perceived Complexity
+
+Measures how hard it is for a human to read the code. Similar to cyclomatic complexity, except different control flow statements have different weights and both ```if``` and ```else``` count as separate paths.
+
+
+
+#### RuboCop in VSCode
+
+With the Ruby-LSP extension, RuboCop will automatically work as long as you have a Gemfile with RuboCop in the project directory.
